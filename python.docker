@@ -1,4 +1,5 @@
 FROM ubuntu-base
+MAINTAINER senthil@uthcode.com
 
 RUN python3.5 -m venv /python_virtualenv
 RUN . /python_virtualenv/bin/activate; pip install --upgrade pip tox
