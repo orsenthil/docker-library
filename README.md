@@ -10,4 +10,4 @@
 
 ## Run python-docker image
 
-    docker run -it python-docker /bin/bash
+    docker run -it --privileged python-docker /bin/bash

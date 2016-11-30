@@ -24,3 +24,5 @@ RUN apt-get install -qyy \
     apt-transport-https \
     ca-certificates \
     docker.io
+
+RUN service docker start
