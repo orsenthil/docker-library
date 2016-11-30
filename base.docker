@@ -20,4 +20,7 @@ RUN apt-get install -qyy \
     ssh \
     git \
     vim \
-    emacs
+    emacs \
+    apt-transport-https \
+    ca-certificates \
+    docker.io
