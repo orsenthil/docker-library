@@ -26,6 +26,7 @@ RUN apt-get install -qyy \
     emacs \
     apt-transport-https \
     ca-certificates \
+    unzip \
     docker.io
 
 RUN service docker start
