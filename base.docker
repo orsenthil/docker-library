@@ -1,4 +1,4 @@
-FROM ubuntu:16.10
+FROM ubuntu:20.04
 MAINTAINER senthil@uthcode.com
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qyy \
@@ -17,7 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qyy \
     python3-dev \
     libmysqlclient-dev \
     python3-virtualenv \
-    libffi6 \
+    libffi7 \
     openssl \
     python3-venv \
     ssh \
@@ -28,7 +28,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qyy \
     ca-certificates \
     unzip \
     docker.io \
-    mysql-server
+    mysql-server \
+    python3-pip
 
 RUN service mysql start
-RUN service docker start
