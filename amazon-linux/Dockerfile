@@ -1,2 +1,2 @@
-FROM amazonlinux:2.0.20211005.0
+FROM amazonlinux:2023
 CMD ["/bin/bash"]

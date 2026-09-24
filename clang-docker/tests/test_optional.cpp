@@ -4,7 +4,7 @@
 #include <optional>
 
 void show_optional_value(const std::optional<int> &o) {
-    // Print the optional has a value if it is not empty
+    // Print the value if the optional is not empty
     if (o) {
         std::cout << "Optional value is: " << *o << "\n";
     } else {

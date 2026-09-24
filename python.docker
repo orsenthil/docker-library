@@ -1,6 +1,9 @@
 FROM ubuntu-base
-MAINTAINER senthil@uthcode.com
+LABEL org.opencontainers.image.authors="senthil@uthcode.com"
 
-RUN python3.5 -m venv /python_virtualenv
-RUN . /python_virtualenv/bin/activate; pip install --upgrade pip tox flake8 flake8-import-order
-ENTRYPOINT /bin/bash
+ENV VIRTUAL_ENV=/python_virtualenv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+RUN pip install --no-cache-dir --upgrade pip tox flake8 flake8-import-order
+
+CMD ["/bin/bash"]

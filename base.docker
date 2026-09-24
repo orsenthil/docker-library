@@ -1,10 +1,10 @@
-FROM ubuntu:20.04
-MAINTAINER senthil@uthcode.com
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qyy \
+FROM ubuntu:24.04
+LABEL org.opencontainers.image.authors="senthil@uthcode.com"
+
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -qyy \
     -o APT::Install-Recommends=false -o APT::Install-Suggests=false \
     build-essential \
-    libncursesw5-dev \
+    libncurses-dev \
     libreadline-dev \
     libssl-dev \
     libgdbm-dev \
@@ -13,22 +13,24 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -qyy \
     tk-dev \
     libbz2-dev \
     liblzma-dev \
+    libffi-dev \
     python3 \
     python3-dev \
-    libmysqlclient-dev \
-    python3-virtualenv \
-    libffi7 \
-    openssl \
+    python3-pip \
     python3-venv \
+    python3-virtualenv \
+    libmysqlclient-dev \
+    openssl \
     ssh \
     git \
     vim \
     emacs \
-    apt-transport-https \
     ca-certificates \
     unzip \
     docker.io \
     mysql-server \
-    python3-pip
+    && rm -rf /var/lib/apt/lists/*
 
-RUN service mysql start
+# Services do not survive past the build step, so start MySQL when the
+# container runs, e.g.: docker run -it ubuntu-base bash -c "service mysql start && bash"
+CMD ["/bin/bash"]

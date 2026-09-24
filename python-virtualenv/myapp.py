@@ -1,15 +1,13 @@
-FROM ubuntu:18.04
-RUN apt-get update && apt-get install \
-  -y --no-install-recommends python3 python3-virtualenv
+import sys
 
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+import requests
 
-# Install dependencies:
-COPY requirements.txt .
-RUN pip install -r requirements.txt
 
-# Run the application:
-COPY myapp.py .
-CMD ["python", "myapp.py"]
+def main():
+    print(f"Running under: {sys.prefix}")
+    response = requests.get("https://pythonspeed.com", timeout=10)
+    print(f"Fetched pythonspeed.com: HTTP {response.status_code}")
+
+
+if __name__ == "__main__":
+    main()
